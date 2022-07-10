@@ -2,16 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Budge</title>
+    <script content="text/javascript" src="../static/js/homepage.js" th:src="@{/js/homepage.js}"></script>
+    <!--
+        <link href="../static/css/homepage.css" th:href="@{/css/homepage.css}" rel="stylesheet"/>
+    -->
 </head>
 <body>
     <h1>Budgets</h1>
     <br><br>
     <p>Manage your budgets using the tools below</p>
     <br>
-    <button id="submission-area" onclick="displaySubmissionArea();"></button>
-    <div id="form-area">
-        
+    <button id="display-budget-management-button" onclick="displayBudgetManagementArea();">Manage Budgets</button>
+    <div id="budget-management" class="budget-management" style="visibility: hidden;">
+        <label for="budget-title">Enter budget name here:</label>
+        <input type="text" id="budget-title" name="budget-title" required>
+        <br><br>
+        <label for="budget-amount">Enter the budget amount here:</label>
+        <input type="number" id="budget-amount" name="budget-amount" required>
+        <br><br><br>
+        <button id="add-budget" onclick="addBudget();">Add budget</button>
+        <button id="remove-budget" onclick="removeBudget();">Remove budget</button>
+        <button id="view-budgets" onclick="viewBudgets();">View budgets</button>
+    </div> 
+
+    <label for="budget-information">
+    <div id="budget-information" class="budget-information">
+        <h3>Your budget information</h3>
+        <br>
+        <p id="budgets"></p>
+        <p id="action-prompt"></p>
     </div>
 </body>
 </html>
