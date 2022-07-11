@@ -8,11 +8,28 @@ body {
 
 .large-content {
     font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .heading {
     font-size: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
+.management-content-button {
+    border-radius: 10px;
+    border-color: #cff4d2;
+    background: #329d9c;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
 
 .main-container {
     background: linear-gradient(#56c596, #7be495);
@@ -21,9 +38,11 @@ body {
     display: flexbox;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .header-content {
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;

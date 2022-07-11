@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="main-container">
+        <div class="widget-container"></div>
         <div class="header-content">
             <div class="heading">
                 <h1 class="heading">Budgets</h1>
@@ -15,10 +16,10 @@
             <br/>
             <div class="large-content">
                 <p class="large-content">Manage your budgets freely</p>
-            </div>
+            </div>  
         </div>
         <div class="management-content">
-            <button id="display-budget-management-button" onclick="displayBudgetManagementArea();">Manage Budgets</button>
+            <button id="display-budget-management-button" class="management-content-button" onclick="displayBudgetManagementArea();">Manage Budgets</button>
             <div id="budget-management" class="budget-management" style="visibility: hidden;">
                 <label for="budget-title">Enter budget name here:</label>
                 <input type="text" id="budget-title" name="budget-title" required>

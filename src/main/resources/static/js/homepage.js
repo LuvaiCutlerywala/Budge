@@ -35,6 +35,7 @@ function viewBudgets(){
 
     if(request.response !== null){
         prompt.innerHTML = "Check the console";
+        budgetDisplay.innerHTML = request.response;
         console.log(request.response);
     } else {
         prompt.innerHTML = "There was a problem fetching your budgets";
