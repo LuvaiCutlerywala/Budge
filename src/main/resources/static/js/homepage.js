@@ -9,8 +9,7 @@ function displayBudgetManagementArea(){
 
 function addBudget(){
     let prompt = document.getElementById("action-prompt");
-    let request = postBudget();
-    if(request.status >= 200 && request.status < 300){
+    if(postBudget()){
         prompt.innerHTML = "Your budget was successfully added.";
     } else {
         prompt.innerHTML = "There was a fault in adding your budget.";
@@ -19,8 +18,7 @@ function addBudget(){
 
 function removeBudget(){
     let prompt = document.getElementById("action-prompt");
-    let request = deleteBudget();
-    if(request.status >= 200 && request.status < 300){
+    if(deleteBudget()){
         prompt.innerHTML = "Your budget was successfully removed.";
     } else {
         prompt.innerHTML = "There was a fault in removing your budget.";
@@ -30,11 +28,14 @@ function removeBudget(){
 function viewBudgets(){
     let prompt = document.getElementById("action-prompt");
     let budgetDisplay = document.getElementById("budgets");
-    let request = viewBudgets();
+
+    let request = new XMLHttpRequest();
+    request.open("GET", "http://localhost:8080/api/view-budgets");
+    request.send(null);
 
     if(request.response !== null){
-        prompt.innerHTML = "Your budgets";
-        budgetDisplay.innerText = request.response;
+        prompt.innerHTML = "Check the console";
+        console.log(request.response);
     } else {
         prompt.innerHTML = "There was a problem fetching your budgets";
     }
@@ -54,7 +55,11 @@ function postBudget(){
     params.append("amount", amount);
     request.send(params);
 
-    return request;
+    if(request.ok){
+        return true;
+    }
+    
+    return false;
 }
 
 function deleteBudget(){
@@ -68,9 +73,14 @@ function deleteBudget(){
     params.append("title", title);
     request.send(params);
 
-    return request;
+    if(request.ok){
+        return true;
+    }
+
+    return false;
 }
 
+/*
 function getBudgets(){
     //Get the request obj.
     let request = new XMLHttpRequest();
@@ -81,3 +91,4 @@ function getBudgets(){
 
     return request;
 }
+*/

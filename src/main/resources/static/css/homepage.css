@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+
+body {
+    background: #329d9c;
+}
+
+
+
+.large-content {
+    font-size: 24px;
+}
+
+.heading {
+    font-size: 64px;
+}
+
+.main-container {
+    background: linear-gradient(#56c596, #7be495);
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.management-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.budget-information {
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+

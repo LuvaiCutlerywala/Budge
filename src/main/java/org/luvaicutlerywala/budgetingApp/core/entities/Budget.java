@@ -28,4 +28,9 @@ public class Budget {
         this.amount = amount;
     }
 
+    @Override
+    public String toString(){
+        return String.format("Title: %s\nAmount: %s", this.title, this.amount);
+    }
+
 }
