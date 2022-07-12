@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api")
+
 public class BudgetAPIController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class BudgetAPIController {
     public void addBudget(@RequestParam String title, @RequestParam double amount){
         Budget budget = new Budget(title, amount);
         registry.addBudget(budget);
-        LOGGER.info("Budget added to registry: " + budget.toString());
+        LOGGER.info("Budget added to registry: " + budget);
     }
 
     @GetMapping("/view-budgets")

@@ -33,7 +33,8 @@ function viewBudgets(){
     request.open("GET", "http://localhost:8080/api/view-budgets");
     request.send(null);
 
-    if(request.response !== null){
+    //response keeps returning as 
+    if(request.response !== null && request.response !== ""){
         prompt.innerHTML = "Check the console";
         budgetDisplay.innerHTML = request.response;
         console.log(request.response);
