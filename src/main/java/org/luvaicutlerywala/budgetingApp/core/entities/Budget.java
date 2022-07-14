@@ -30,7 +30,7 @@ public class Budget {
 
     @Override
     public String toString(){
-        return String.format("Title: %s\nAmount: %s", this.title, this.amount);
+        return String.format("Title: %s\tAmount: %s", this.title, this.amount);
     }
 
 }
