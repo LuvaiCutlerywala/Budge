@@ -20,14 +20,14 @@ function addBudget(){
     let amount = document.getElementById("budget-amount");
     let actionPrompt = document.getElementById("action-prompt");
 
-    actionPrompt.innerHTML = "Your budget is being updated";
+    actionPrompt.innerHTML = "Your budget is being added";
 
     request.open("POST", "http://192.168.50.154:8080/api/add-budget", true);
     request.onload = function (){
         if(request.ok){
-            updatePrompt([actionPrompt], ["Your budgets were updated successfully"]);
+            updatePrompt([actionPrompt], ["Your budget was added successfully"]);
         } else {
-            updatePrompt([actionPrompt], ["There was an issue in updating your budgets"]);
+            updatePrompt([actionPrompt], ["There was an issue in adding your budget"]);
         }
     }
 
@@ -38,9 +38,27 @@ function addBudget(){
 }
 
 function removeBudget(){
+    let request = new XMLHttpRequest();
+    let params = new URLSearchParams();
+    let title = document.getElementById("budget-title");
+    let actionPrompt = document.getElementById("action-prompt");
 
+    updatePrompt([actionPrompt], ["Your budget is being removed"]);
+
+    request.open("DELETE", "http://192.168.50.154:8080/api/remove-budget", true);
+    request.onload = function (){
+        if(request.ok){
+            updatePrompt([actionPrompt], ["Your budget was removed successfully"]);
+        } else {
+            updatePrompt([actionPrompt], ["There was an issue in removing your budget"]);
+        }
+    }
+
+    params.append("title", title.value);
+
+    request.send(params);
 }
 
 function viewBudgets(){
-
+    
 }
