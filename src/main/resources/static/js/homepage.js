@@ -7,8 +7,10 @@ function displayBudgetManagementArea(){
     }
 }
 
-function updatePrompt(){
-
+function updatePrompt(elements, messages){
+    for(let i = 0; i <= elements.length; ++i){
+        elements[i].innerHTML = messages[i];
+    }
 }
 
 function addBudget(){
@@ -20,5 +22,5 @@ function removeBudget(){
 }
 
 function viewBudgets(){
-    
+
 }
