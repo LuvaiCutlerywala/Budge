@@ -8,7 +8,7 @@ function displayBudgetManagementArea(){
 }
 
 function updatePrompt(elements, messages){
-    for(let i = 0; i <= elements.length; ++i){
+    for(let i = 0; i < elements.length; ++i){
         elements[i].innerHTML = messages[i];
     }
 }
@@ -24,10 +24,15 @@ function addBudget(){
 
     request.open("POST", "http://192.168.50.154:8080/api/add-budget", true);
     request.onload = function (){
-        if(request.ok){
-            updatePrompt([actionPrompt], ["Your budget was added successfully"]);
-        } else {
-            updatePrompt([actionPrompt], ["There was an issue in adding your budget"]);
+        console.log(request.status);
+        if(request.readyState === 4){
+            if(request.status >= 200 && request.status < 300){
+                updatePrompt([actionPrompt], ["Your budget was added successfully"]);
+            } else if(request.status >= 400 && request.status < 500){
+                alert("Please enter all fields correctly");
+            } else {
+                updatePrompt([actionPrompt], ["There was an issue in adding your budget"]);
+            }
         }
     }
 
@@ -47,10 +52,15 @@ function removeBudget(){
 
     request.open("DELETE", "http://192.168.50.154:8080/api/remove-budget", true);
     request.onload = function (){
-        if(request.ok){
-            updatePrompt([actionPrompt], ["Your budget was removed successfully"]);
-        } else {
-            updatePrompt([actionPrompt], ["There was an issue in removing your budget"]);
+        console.log(request.status);
+        if(request.readyState === 4){
+            if(request.status >= 200 && request.status < 300){
+                updatePrompt([actionPrompt], ["Your budget was removed successfully"]);
+            } else if(request.status >= 400 && request.status < 500){
+                alert("Please enter all fields correctly");
+            } else {
+                updatePrompt([actionPrompt], ["There was an issue in removing your budget"]);
+            }
         }
     }
 
@@ -68,10 +78,13 @@ function viewBudgets(){
 
     request.open("GET", "http://192.168.50.154:8080/api/view-budgets", true);
     request.onload = function (){
-        if(request.ok) {
-            updatePrompt([budgets, actionPrompt], [request.response, "Here are your budgets"]);
-        } else {
-            updatePrompt([actionPrompt], ["There was an issue in fetching your budgets"]);
+        console.log(request.status);
+        if(request.readyState === 4){
+            if(request.status >= 200 && request.status < 300) {
+                updatePrompt([budgets, actionPrompt], [request.response, "Here are your budgets"]);
+            } else {
+                updatePrompt([actionPrompt], ["There was an issue in fetching your budgets"]);
+            }
         }
     }
 
