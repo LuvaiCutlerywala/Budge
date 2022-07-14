@@ -14,7 +14,27 @@ function updatePrompt(elements, messages){
 }
 
 function addBudget(){
+    let request = new XMLHttpRequest();
+    let params = new URLSearchParams();
+    let title = document.getElementById("budget-title");
+    let amount = document.getElementById("budget-amount");
+    let actionPrompt = document.getElementById("action-prompt");
 
+    actionPrompt.innerHTML = "Your budget is being updated";
+
+    request.open("POST", "http://192.168.50.154:8080/api/add-budget", true);
+    request.onload = function (){
+        if(request.ok){
+            updatePrompt([actionPrompt], ["Your budgets were updated successfully"]);
+        } else {
+            updatePrompt([actionPrompt], ["There was an issue in updating your budgets"]);
+        }
+    }
+
+    params.append("title", title.value);
+    params.append("amount", amount.value);
+
+    request.send(params);
 }
 
 function removeBudget(){
