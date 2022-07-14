@@ -20,7 +20,7 @@ function addBudget(){
     let amount = document.getElementById("budget-amount");
     let actionPrompt = document.getElementById("action-prompt");
 
-    actionPrompt.innerHTML = "Your budget is being added";
+    updatePrompt([actionPrompt], ["Your budgets are being added"]);
 
     request.open("POST", "http://192.168.50.154:8080/api/add-budget", true);
     request.onload = function (){
@@ -60,5 +60,20 @@ function removeBudget(){
 }
 
 function viewBudgets(){
-    
+    let request = new XMLHttpRequest();
+    let budgets = document.getElementById("budgets");
+    let actionPrompt = document.getElementById("action-prompt");
+
+    updatePrompt([actionPrompt], ["Your budgets are being fetched"]);
+
+    request.open("GET", "http://192.168.50.154:8080/api/view-budgets", true);
+    request.onload = function (){
+        if(request.ok) {
+            updatePrompt([budgets, actionPrompt], [request.response, "Here are your budgets"]);
+        } else {
+            updatePrompt([actionPrompt], ["There was an issue in fetching your budgets"]);
+        }
+    }
+
+    request.send(null);
 }
